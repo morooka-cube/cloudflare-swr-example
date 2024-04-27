@@ -13,12 +13,12 @@
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		const date = new Date();
+		const date = new Date().toISOString();
 		console.log(date);
 
-		return Response.json(date.toISOString(), {
+		return Response.json(date, {
 			headers: {
-				'Cache-Control': 'public, s-max-age=60'
+				'Cache-Control': 'public, max-age=60'
 			}
 		});
 	},
